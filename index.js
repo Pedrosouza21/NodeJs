@@ -1,32 +1,11 @@
 // Criando um Servidor Web com Node.JS
 
 const express = require('express');
+const consign = require('consign');
 
 let app = express();
 
-
-app.get('/', (req, res) =>{
-
-    
-    res.statusCode = 200;
-    res.setHeader('Content-type', 'text/html');
-    res.end('<h1>Olá</h1>');
-});
-
-
-app.get('/users', (req, res) => {
-
-    res.statusCode = 200;
-    res.setHeader('Content-type', 'application/json');
-    res.json({
-        users: [{
-            name: 'Hcode',
-            email: 'contato@hcode.com.br',
-            id: 1
-        }]
-    });
-
-});
+consign().include('routes').into(app);
 
 
 
