@@ -1,11 +1,14 @@
 // Criando um Servidor Web com Node.JS
-
 const express = require('express');
 const consign = require('consign');
+const bodyParser = require('body-parser');
 
 let app = express();
 
-consign().include('routes').into(app);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+consign().include('routes').include('utils').into(app);
 
 
 
